@@ -213,6 +213,24 @@ function initHeaderScroll() {
   window.addEventListener("scroll", onScroll, { passive: true });
 }
 
+function initReveal() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const els = document.querySelectorAll(".reveal");
+  if (!els.length) return;
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+  );
+  els.forEach((el) => io.observe(el));
+}
+
 document.getElementById("year").textContent = String(new Date().getFullYear());
 
 setLang(state.lang);
@@ -223,3 +241,4 @@ initCases();
 initLaptop();
 initForm();
 initHeaderScroll();
+initReveal();

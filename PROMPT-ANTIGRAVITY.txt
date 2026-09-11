@@ -1,0 +1,4 @@
+Lee ANTIGRAVITY.md y AGENTS.md en este repo.
+Refina la web DWais Media siguiendo esas reglas (sin tagline, sin precios, ES/EN).
+Prioridad: hero premium, cards con screenshots reales, móvil, WhatsApp sticky.
+Al terminar: commit + push a main para Netlify.

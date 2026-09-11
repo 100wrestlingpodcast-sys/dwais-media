@@ -26,13 +26,10 @@ export const STRINGS = {
       toEn: "Cambiar a inglés",
     },
     hero: {
+      sub: "Diseñamos y desarrollamos sitios web para marcas en Puerto Rico — modernos, rápidos y listos para crecer.",
       ctaWork: "Ver trabajos",
       ctaWhatsapp: "Hablar por WhatsApp",
       deviceAria: "Mockup 3D de una laptop mostrando un sitio web",
-      screenBrand: "Casa Norte",
-      screenNav: "Colección",
-      screenTitle: "Diseño con carácter",
-      screenBody: "Una presencia digital cálida, clara y lista para convertir.",
     },
     work: {
       kicker: "Trabajo",
@@ -186,13 +183,10 @@ export const STRINGS = {
       toEn: "Switch to English",
     },
     hero: {
+      sub: "We design and develop websites for brands in Puerto Rico — modern, fast, and built to grow.",
       ctaWork: "View work",
       ctaWhatsapp: "Chat on WhatsApp",
       deviceAria: "3D laptop mockup showing a website on screen",
-      screenBrand: "Casa Norte",
-      screenNav: "Collection",
-      screenTitle: "Design with character",
-      screenBody: "A warm, clear digital presence built to convert.",
     },
     work: {
       kicker: "Work",

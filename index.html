@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="DWais Media diseña sitios web para marcas en Puerto Rico. Presencia digital clara, bilingüe y lista para crecer." />
-    <meta name="theme-color" content="#0a0b0d" />
+    <meta name="theme-color" content="#080910" />
     <meta property="og:title" content="DWais Media" />
     <meta property="og:description" content="DWais Media diseña sitios web para marcas en Puerto Rico. Presencia digital clara, bilingüe y lista para crecer." />
     <meta property="og:type" content="website" />
@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Outfit:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
@@ -23,6 +23,7 @@
   <body>
     <a class="skip-link" href="#contenido" data-i18n="skip">Saltar al contenido</a>
 
+    <!-- ── Header ─────────────────────────────────────────────── -->
     <header class="site-header" id="inicio">
       <div class="header-inner">
         <a class="wordmark" href="#inicio" aria-label="DWais Media">
@@ -39,13 +40,9 @@
 
         <div class="header-tools">
           <div class="lang-toggle" role="group" data-i18n-aria="lang.label" aria-label="Idioma">
-            <button type="button" class="lang-btn is-active" data-lang-btn="es" aria-pressed="true" data-i18n-aria="lang.toEs" aria-label="Cambiar a español">
-              ES
-            </button>
+            <button type="button" class="lang-btn is-active" data-lang-btn="es" aria-pressed="true" data-i18n-aria="lang.toEs" aria-label="Cambiar a español">ES</button>
             <span class="lang-sep" aria-hidden="true">|</span>
-            <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false" data-i18n-aria="lang.toEn" aria-label="Cambiar a inglés">
-              EN
-            </button>
+            <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false" data-i18n-aria="lang.toEn" aria-label="Cambiar a inglés">EN</button>
           </div>
           <button
             type="button"
@@ -63,10 +60,14 @@
       </div>
     </header>
 
+    <!-- ── Main ───────────────────────────────────────────────── -->
     <main id="contenido">
+
+      <!-- Hero -->
       <section class="hero" aria-labelledby="hero-name">
         <div class="hero-copy">
           <h1 id="hero-name" class="brand-name">DWais Media</h1>
+          <p class="hero-sub" data-i18n="hero.sub">Diseñamos y desarrollamos sitios web para marcas en Puerto Rico — modernos, rápidos y listos para crecer.</p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#trabajo" data-i18n="hero.ctaWork">Ver trabajos</a>
             <a class="btn btn-ghost" id="cta-whatsapp" href="https://wa.me/12106209860" target="_blank" rel="noopener noreferrer" data-i18n="hero.ctaWhatsapp">
@@ -87,11 +88,15 @@
               <div class="laptop-bezel">
                 <span class="laptop-camera" aria-hidden="true"></span>
                 <div class="laptop-screen" aria-hidden="true">
-                  <div class="laptop-screen">
-                  <img class="hero-shot" src="assets/projects/juanadiaz.png" alt="" width="1440" height="900" decoding="async" />
-                </div>
-              </div>
-            </div>
+                  <img
+                    class="hero-shot"
+                    src="assets/projects/juanadiaz.png"
+                    alt=""
+                    width="1440"
+                    height="900"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
                 </div>
               </div>
             </div>
@@ -104,22 +109,35 @@
         </div>
       </section>
 
+      <!-- Trabajo -->
       <section class="section work" id="trabajo" aria-labelledby="work-title">
-        <div class="section-intro">
+        <div class="section-intro reveal">
           <p class="kicker" data-i18n="work.kicker">Trabajo</p>
           <h2 id="work-title" data-i18n="work.title">Sitios que ya están en el mundo</h2>
           <p class="lede" data-i18n="work.lede">Cinco proyectos en vivo — marcas locales, retail, medios y comunidad en Puerto Rico.</p>
         </div>
 
         <div class="work-grid">
-          <article class="project-card" data-project="cigars">
-                        <div class="project-mock">
+
+          <!-- Juana Díaz Cigars -->
+          <article class="project-card reveal reveal-delay-1" data-project="cigars">
+            <div class="project-mock">
               <div class="browser">
-                <span class="dots" aria-hidden="true"></span>
+                <div class="browser-bar" aria-hidden="true">
+                  <div class="browser-dots">
+                    <span class="browser-dot red"></span>
+                    <span class="browser-dot yellow"></span>
+                    <span class="browser-dot green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <span class="browser-url-lock"></span>
+                    <span class="browser-url-text">juanadiazcigars.netlify.app</span>
+                  </div>
+                </div>
                 <img class="project-shot" src="assets/projects/juanadiaz.png" alt="Captura del sitio Juana Díaz Cigars" loading="lazy" width="1440" height="900" />
               </div>
             </div>
-<div class="project-body">
+            <div class="project-body">
               <h3 data-i18n="projects.cigars.name">Juana Díaz Cigars</h3>
               <p class="outcome" data-i18n="projects.cigars.outcome">Presencia premium para cigar bar y tienda oficial.</p>
               <div class="project-actions">
@@ -138,14 +156,25 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="tcg">
-                        <div class="project-mock">
+          <!-- Khriz Studio TCG -->
+          <article class="project-card reveal reveal-delay-2" data-project="tcg">
+            <div class="project-mock">
               <div class="browser">
-                <span class="dots" aria-hidden="true"></span>
+                <div class="browser-bar" aria-hidden="true">
+                  <div class="browser-dots">
+                    <span class="browser-dot red"></span>
+                    <span class="browser-dot yellow"></span>
+                    <span class="browser-dot green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <span class="browser-url-lock"></span>
+                    <span class="browser-url-text">khrizstudiotcg.com</span>
+                  </div>
+                </div>
                 <img class="project-shot" src="assets/projects/khrizstudio.png" alt="Captura del sitio Khriz Studio TCG" loading="lazy" width="1440" height="900" />
               </div>
             </div>
-<div class="project-body">
+            <div class="project-body">
               <h3 data-i18n="projects.tcg.name">Khriz Studio TCG</h3>
               <p class="outcome" data-i18n="projects.tcg.outcome">Tienda local y comunidad TCG en Sabana Grande, en un solo sitio.</p>
               <div class="project-actions">
@@ -164,14 +193,25 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="geek">
-                        <div class="project-mock">
+          <!-- Geek Collector PR -->
+          <article class="project-card reveal reveal-delay-1" data-project="geek">
+            <div class="project-mock">
               <div class="browser">
-                <span class="dots" aria-hidden="true"></span>
+                <div class="browser-bar" aria-hidden="true">
+                  <div class="browser-dots">
+                    <span class="browser-dot red"></span>
+                    <span class="browser-dot yellow"></span>
+                    <span class="browser-dot green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <span class="browser-url-lock"></span>
+                    <span class="browser-url-text">geekcollectorpr.com</span>
+                  </div>
+                </div>
                 <img class="project-shot" src="assets/projects/geekcollector.png" alt="Captura del sitio Geek Collector PR" loading="lazy" width="1440" height="900" />
               </div>
             </div>
-<div class="project-body">
+            <div class="project-body">
               <h3 data-i18n="projects.geek.name">Geek Collector PR</h3>
               <p class="outcome" data-i18n="projects.geek.outcome">Marketplace claro para coleccionistas en Puerto Rico.</p>
               <div class="project-actions">
@@ -190,14 +230,25 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="wrestling">
-                        <div class="project-mock">
+          <!-- 100% Wrestling Podcast -->
+          <article class="project-card reveal reveal-delay-2" data-project="wrestling">
+            <div class="project-mock">
               <div class="browser">
-                <span class="dots" aria-hidden="true"></span>
+                <div class="browser-bar" aria-hidden="true">
+                  <div class="browser-dots">
+                    <span class="browser-dot red"></span>
+                    <span class="browser-dot yellow"></span>
+                    <span class="browser-dot green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <span class="browser-url-lock"></span>
+                    <span class="browser-url-text">100wrestlingpodcast.com</span>
+                  </div>
+                </div>
                 <img class="project-shot" src="assets/projects/wrestling.png" alt="Captura del sitio 100% Wrestling Podcast" loading="lazy" width="1440" height="900" />
               </div>
             </div>
-<div class="project-body">
+            <div class="project-body">
               <h3 data-i18n="projects.wrestling.name">100% Wrestling Podcast</h3>
               <p class="outcome" data-i18n="projects.wrestling.outcome">Hub de medios para programas, Patreon y redes.</p>
               <div class="project-actions">
@@ -216,14 +267,25 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="bsn">
-                        <div class="project-mock">
+          <!-- 2K BSN -->
+          <article class="project-card reveal reveal-delay-1" data-project="bsn">
+            <div class="project-mock">
               <div class="browser">
-                <span class="dots" aria-hidden="true"></span>
+                <div class="browser-bar" aria-hidden="true">
+                  <div class="browser-dots">
+                    <span class="browser-dot red"></span>
+                    <span class="browser-dot yellow"></span>
+                    <span class="browser-dot green"></span>
+                  </div>
+                  <div class="browser-url">
+                    <span class="browser-url-lock"></span>
+                    <span class="browser-url-text">2kbsn.com</span>
+                  </div>
+                </div>
                 <img class="project-shot" src="assets/projects/twokbsn.png" alt="Captura del sitio 2K BSN" loading="lazy" width="1440" height="900" />
               </div>
             </div>
-<div class="project-body">
+            <div class="project-body">
               <h3 data-i18n="projects.bsn.name">2K BSN</h3>
               <p class="outcome" data-i18n="projects.bsn.outcome">Liga y comunidad gamer con identidad de temporada.</p>
               <div class="project-actions">
@@ -241,18 +303,20 @@
               </div>
             </div>
           </article>
+
         </div>
       </section>
 
+      <!-- Servicios -->
       <section class="section services" id="servicios" aria-labelledby="services-title">
-        <div class="section-intro">
+        <div class="section-intro reveal">
           <p class="kicker" data-i18n="services.kicker">Servicios</p>
           <h2 id="services-title" data-i18n="services.title">Tres formas de empezar</h2>
           <p class="lede" data-i18n="services.lede">Paquetes claros. Cotización a la medida — hablamos por WhatsApp.</p>
         </div>
 
         <div class="service-grid">
-          <article class="service-card">
+          <article class="service-card reveal reveal-delay-1">
             <p class="service-index">01</p>
             <h3 data-i18n="packages.presence.name">Presencia</h3>
             <p class="service-tag" data-i18n="packages.presence.tag">Landing de 1 página</p>
@@ -266,7 +330,7 @@
             <a class="btn btn-primary quote-btn" data-package="presence" href="https://wa.me/12106209860" target="_blank" rel="noopener noreferrer" data-i18n="services.quote">Pedir cotización</a>
           </article>
 
-          <article class="service-card featured">
+          <article class="service-card featured reveal reveal-delay-2">
             <p class="service-index">02</p>
             <h3 data-i18n="packages.business.name">Negocio</h3>
             <p class="service-tag" data-i18n="packages.business.tag">Sitio PYME de 4–6 páginas</p>
@@ -280,7 +344,7 @@
             <a class="btn btn-primary quote-btn" data-package="business" href="https://wa.me/12106209860" target="_blank" rel="noopener noreferrer" data-i18n="services.quote">Pedir cotización</a>
           </article>
 
-          <article class="service-card">
+          <article class="service-card reveal reveal-delay-3">
             <p class="service-index">03</p>
             <h3 data-i18n="packages.growth.name">Impulso</h3>
             <p class="service-tag" data-i18n="packages.growth.tag">Rediseño y conversión</p>
@@ -296,14 +360,15 @@
         </div>
       </section>
 
+      <!-- Contacto -->
       <section class="section contact" id="contacto" aria-labelledby="contact-title">
-        <div class="section-intro">
+        <div class="section-intro reveal">
           <p class="kicker" data-i18n="contact.kicker">Contacto</p>
           <h2 id="contact-title" data-i18n="contact.title">Hablemos de tu sitio</h2>
           <p class="lede" data-i18n="contact.lede">Cuéntanos el proyecto. Respondemos por WhatsApp o correo — Puerto Rico y clientes bilingües.</p>
         </div>
 
-        <div class="contact-layout">
+        <div class="contact-layout reveal">
           <div class="contact-direct">
             <a class="direct-card wa" id="contact-whatsapp" href="https://wa.me/12106209860" target="_blank" rel="noopener noreferrer">
               <span class="direct-kicker" data-i18n="contact.whatsappHint">Respuesta más rápida</span>
@@ -359,6 +424,7 @@
       </section>
     </main>
 
+    <!-- ── Footer ─────────────────────────────────────────────── -->
     <footer class="site-footer">
       <p>
         <span class="wordmark-dwais">DWais</span>
@@ -370,6 +436,7 @@
       <p class="footer-locale" data-i18n="footer.locale">Puerto Rico · ES / EN</p>
     </footer>
 
+    <!-- WhatsApp FAB (solo móvil) -->
     <a
       class="wa-fab"
       id="wa-fab"
@@ -385,6 +452,7 @@
           d="M20.5 3.5A11 11 0 0 0 2.4 17.7L1 23l5.5-1.4A11 11 0 0 0 20.5 3.5zm-8.5 18a9.1 9.1 0 0 1-4.6-1.3l-.3-.2-3.2.8.9-3.1-.2-.3A9.1 9.1 0 1 1 12 21.5zm5.2-6.8c-.3-.1-1.6-.8-1.9-.9-.2-.1-.4-.1-.6.1s-.7.9-.8 1.1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.1-.3a.5.5 0 0 0 0-.4c0-.1-.6-1.4-.8-1.9s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4 15 15 0 0 0 1.5.5 3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c-.1-.1-.3-.2-.6-.3z"
         />
       </svg>
+      <span class="wa-fab-label" data-i18n="hero.ctaWhatsapp">Hablar por WhatsApp</span>
     </a>
 
     <script type="module" src="js/main.js"></script>
