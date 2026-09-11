@@ -209,6 +209,45 @@ function initReveal() {
   els.forEach((el) => io.observe(el));
 }
 
+/**
+ * model-viewer: wire progress bar and ensure .reveal sections are
+ * visible regardless of whether 3D loads or fails.
+ */
+function initModelViewer() {
+  // Always run reveal so sections are never stuck hidden
+  initReveal();
+
+  const mv = document.getElementById("device-mv");
+  const bar = document.getElementById("mv-progress-bar");
+  if (!mv) return;
+
+  // Sync aria label with i18n
+  const updateAria = () => {
+    mv.setAttribute("alt", t(state.lang, "hero.deviceAria"));
+  };
+  updateAria();
+
+  // Progress bar
+  if (bar) {
+    mv.addEventListener("progress", (e) => {
+      const pct = Math.round(e.detail.totalProgress * 100);
+      bar.style.width = pct + "%";
+    });
+    mv.addEventListener("load", () => {
+      bar.style.width = "100%";
+      setTimeout(() => { bar.style.opacity = "0"; }, 600);
+    });
+    mv.addEventListener("error", () => {
+      // GLB failed — hide the scene gracefully
+      const scene = document.getElementById("device-scene");
+      if (scene) {
+        scene.style.opacity = "0.4";
+        scene.style.pointerEvents = "none";
+      }
+    });
+  }
+}
+
 // ── Bootstrap ──────────────────────────────────────────────────
 document.documentElement.classList.add("js-ready");
 document.getElementById("year").textContent = String(new Date().getFullYear());
@@ -220,9 +259,4 @@ initSmoothScroll();
 initCases();
 initForm();
 initHeaderScroll();
-initReveal();
-
-// 3D Device — dynamic import so a Three.js failure never blanks the page
-import("./device3d.js")
-  .then((m) => m.initDevice3D("device-scene"))
-  .catch((err) => console.warn("Device 3D skipped:", err));
+initModelViewer();

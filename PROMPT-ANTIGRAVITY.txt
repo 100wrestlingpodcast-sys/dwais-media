@@ -1,27 +1,21 @@
-Lee ANTIGRAVITY.md. Aplica ESTOS cambios YA en este repo (~/Sites/dwais-media), luego commit + push a main (Netlify).
+URGENTE — hero 3D (DWais Media, este repo). Lee ANTIGRAVITY.md. Luego:
 
-## 1) Móvil — menos espacio vacío
-Revisa la versión mobile: reduce paddings/gaps grandes en hero, sections y device. Que no haya “huecos” excesivos entre bloques.
+## Problema
+El laptop Three.js actual NO convence. Al girar se CORTA porque el frame/container es estrecho (overflow hidden). Alberto quiere una TABLETA REAL, no un mock CSS/procedural flojo.
 
-## 2) Modelo 3D del dispositivo (prioridad alta)
-El laptop/tablet CSS actual NO basta. Sustitúyelo por un modelo 3D IMPRECABLE y DETALLADO que el usuario pueda GIRAR (orbit / drag).
-Opciones válidas: Google <model-viewer> con un .glb de laptop/tablet de alta calidad en assets/models/, o Three.js + OrbitControls con modelo real.
-- Pantalla del modelo puede mostrar una de nuestras capturas (assets/projects/).
-- Debe verse premium en desktop y móvil (en móvil: rotar sin romper el scroll).
-- Hint: “Arrastra para girar” / “Drag to rotate” (i18n).
+## Qué hacer
+1. Quita el laptop Three.js actual del hero (js/device3d.js puede quedarse sin usarse o eliminarse si ya no hace falta).
+2. Pon una TABLETA 3D REALISTA y GIRATORIA:
+   - Preferido: <model-viewer> (Google) + archivo .glb de iPad/tablet de alta calidad en assets/models/
+   - Descarga un modelo GLB/GLTF libre y bueno (Sketchfab CC / Poly Pizza / similar). Debe verse como tableta real (bezel, cámara, grosor).
+   - camera-controls + auto-rotate suave; en móvil que se pueda girar sin romper el scroll vertical.
+3. Frame MÁS AMPLIO: el contenedor del hero device debe ser más wide/alto y SIN cortar el modelo al orbitar (quita overflow:hidden agresivo o dale más padding/altura). En desktop que respire; en móvil que no se coma toda la pantalla.
+4. En la pantalla de la tableta, si el modelo lo permite, usa una de nuestras capturas (assets/projects/*.png). Si el GLB ya trae pantalla, ok; si no, texturiza o superpón con cuidado.
+5. Hint i18n: “Arrastra para girar” / “Drag to rotate”.
+6. NO rompas el sitio: mantén el importmap / dynamic import pattern del fix 49619bf para que un fallo de 3D NUNCA deje la página en negro. Las secciones .reveal deben seguir visibles si el 3D falla.
+7. commit + push a main (Netlify).
 
-## 3) Logo WhatsApp
-El ícono del botón WhatsApp (FAB y/o botones de contacto) se ve mal. Usa el path SVG oficial de WhatsApp, nítido, bien centrado, buen contraste.
+## No tocar
+Sin tagline, sin precios, sin mostrar el teléfono, botones WhatsApp/correo como están (CTA), ES/EN, screenshots reales del portfolio.
 
-## 4) NO mostrar el número de teléfono
-Donde dice “Respuesta más rápida” / WhatsApp: debe ser un BOTÓN con logo de WhatsApp + texto tipo “Escribir por WhatsApp”.
-NUNCA muestres +1 210-620-9860 ni el número en el UI. El link sigue siendo https://wa.me/12106209860 por debajo.
-Quita cualquier whatsapp-display / whatsappDisplay en la UI. Revisa js/main.js y js/config.js.
-
-## 5) Correo = botón mailto
-La tarjeta de correo debe ser un BOTÓN claro (ej. “Enviar correo”) que abra mailto:dwaisemedia@gmail.com (app de correo del dispositivo). No hace falta enseñar el email como texto suelto si queda mejor como CTA; el href mailto es obligatorio.
-
-## Reglas fijas
-DWais Media, sin tagline, sin precios, ES default + EN toggle, screenshots reales en portfolio, push a main.
-
-Cuando termines: resume qué cambiaste y confirma el push.
+Cuando termines: confirma URL del modelo usado y el commit.
