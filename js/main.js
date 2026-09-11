@@ -189,9 +189,12 @@ function initForm() {
       status.textContent = t(state.lang, "contact.form.success");
       status.classList.add("is-success");
     } catch {
-      const subject = encodeURIComponent(`${CONFIG.brand} — ${form.name.value || ""}`.trim());
+      const fields = new FormData(form);
+      const subject = encodeURIComponent(
+        `${CONFIG.brand} — ${fields.get("name") || ""}`.trim()
+      );
       const body = encodeURIComponent(
-        `${form.message.value}\n\n${form.email.value}\n${form.project.value || ""}`
+        `${fields.get("message") || ""}\n\n${fields.get("email") || ""}\n${fields.get("project") || ""}`
       );
       status.innerHTML = `${t(state.lang, "contact.form.error")} <a href="mailto:${CONFIG.email}?subject=${subject}&body=${body}">${CONFIG.email}</a>`;
       status.classList.add("is-error");
