@@ -486,6 +486,13 @@ body.nav-open .nav-toggle span:last-child {
   overflow: hidden;
 }
 
+.laptop-base::before {
+  content: "";
+  display: block;
+  height: 7px;
+  background: linear-gradient(180deg, #5c6168, #2f3338);
+}
+
 .laptop-keyboard {
   height: 58%;
   margin: 14px 18px 0;
@@ -493,15 +500,15 @@ body.nav-open .nav-toggle span:last-child {
   background-image:
     repeating-linear-gradient(
       180deg,
-      rgba(40, 44, 50, 0.16) 0 1px,
+      rgba(40, 44, 50, 0.32) 0 1px,
       transparent 1px 13px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(40, 44, 50, 0.16) 0 1px,
+      rgba(40, 44, 50, 0.32) 0 1px,
       transparent 1px 17px
     );
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(230, 234, 238, 0.35);
 }
 
 .laptop-trackpad {
