@@ -29,7 +29,7 @@ export const STRINGS = {
       sub: "Diseñamos y desarrollamos sitios web para marcas en Puerto Rico — modernos, rápidos y listos para crecer.",
       ctaWork: "Ver trabajos",
       ctaWhatsapp: "Hablar por WhatsApp",
-      deviceAria: "Tablet 3D interactiva mostrando un sitio web",
+      deviceAria: "iPad con el sitio de Khriz Studio TCG en pantalla",
       deviceHint: "Arrastra para girar",
     },
     work: {
@@ -189,7 +189,7 @@ export const STRINGS = {
       sub: "We design and develop websites for brands in Puerto Rico — modern, fast, and built to grow.",
       ctaWork: "View work",
       ctaWhatsapp: "Chat on WhatsApp",
-      deviceAria: "Interactive 3D tablet showing a website",
+      deviceAria: "iPad showing the Khriz Studio TCG website",
       deviceHint: "Drag to rotate",
     },
     work: {

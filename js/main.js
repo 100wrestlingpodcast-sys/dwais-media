@@ -43,6 +43,7 @@ function setLang(lang) {
   applyI18n(state.lang);
   syncContactLinks();
   refreshCaseToggleLabels();
+  document.dispatchEvent(new CustomEvent("dwais:lang"));
 }
 
 function refreshCaseToggleLabels() {
@@ -210,42 +211,81 @@ function initReveal() {
 }
 
 /**
- * model-viewer: wire progress bar and ensure .reveal sections are
- * visible regardless of whether 3D loads or fails.
+ * Hero iPad: drag-to-tilt (CSS 3D). Reveal always runs so sections
+ * never stay stuck at opacity 0 if JS partially fails.
  */
-function initModelViewer() {
-  // Always run reveal so sections are never stuck hidden
+function initDeviceTilt() {
   initReveal();
 
-  const mv = document.getElementById("device-mv");
-  const bar = document.getElementById("mv-progress-bar");
-  if (!mv) return;
+  const stage = document.getElementById("device-stage");
+  const img = document.getElementById("device-ipad");
+  if (!stage || !img) return;
 
-  // Sync aria label with i18n
-  const updateAria = () => {
-    mv.setAttribute("alt", t(state.lang, "hero.deviceAria"));
+  const syncAria = () => {
+    stage.setAttribute("aria-label", t(state.lang, "hero.deviceAria"));
   };
-  updateAria();
+  syncAria();
+  // Keep aria in sync when language toggles (setLang already re-applies i18n;
+  // this covers the role=img host).
+  document.addEventListener("dwais:lang", syncAria);
 
-  // Progress bar
-  if (bar) {
-    mv.addEventListener("progress", (e) => {
-      const pct = Math.round(e.detail.totalProgress * 100);
-      bar.style.width = pct + "%";
-    });
-    mv.addEventListener("load", () => {
-      bar.style.width = "100%";
-      setTimeout(() => { bar.style.opacity = "0"; }, 600);
-    });
-    mv.addEventListener("error", () => {
-      // GLB failed — hide the scene gracefully
-      const scene = document.getElementById("device-scene");
-      if (scene) {
-        scene.style.opacity = "0.4";
-        scene.style.pointerEvents = "none";
-      }
-    });
-  }
+  let rotY = -18;
+  let rotX = 6;
+  let targetY = rotY;
+  let targetX = rotX;
+  let dragging = false;
+  let lastX = 0;
+  let lastY = 0;
+  let auto = true;
+  let autoDir = 1;
+  let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const apply = () => {
+    img.style.transform =
+      "rotateY(" + rotY.toFixed(2) + "deg) rotateX(" + rotX.toFixed(2) + "deg)";
+  };
+  apply();
+
+  const onPointerDown = (e) => {
+    dragging = true;
+    auto = false;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    stage.setPointerCapture?.(e.pointerId);
+  };
+  const onPointerMove = (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    targetY += dx * 0.35;
+    targetX -= dy * 0.25;
+    targetY = Math.max(-42, Math.min(42, targetY));
+    targetX = Math.max(-14, Math.min(18, targetX));
+  };
+  const onPointerUp = () => {
+    dragging = false;
+  };
+
+  stage.addEventListener("pointerdown", onPointerDown);
+  stage.addEventListener("pointermove", onPointerMove);
+  stage.addEventListener("pointerup", onPointerUp);
+  stage.addEventListener("pointercancel", onPointerUp);
+
+  const tick = () => {
+    if (!reduced && auto && !dragging) {
+      targetY += 0.08 * autoDir;
+      if (targetY > 22) autoDir = -1;
+      if (targetY < -28) autoDir = 1;
+      targetX = 6 + Math.sin((performance.now() / 4000) * Math.PI * 2) * 2;
+    }
+    rotY += (targetY - rotY) * 0.12;
+    rotX += (targetX - rotX) * 0.12;
+    apply();
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
 }
 
 // ── Bootstrap ──────────────────────────────────────────────────
@@ -259,4 +299,4 @@ initSmoothScroll();
 initCases();
 initForm();
 initHeaderScroll();
-initModelViewer();
+initDeviceTilt();

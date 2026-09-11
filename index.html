@@ -19,8 +19,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
-    <!-- model-viewer web component -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#contenido" data-i18n="skip">Saltar al contenido</a>
@@ -79,41 +77,21 @@
           </div>
         </div>
 
-        <!-- 3D Tablet — model-viewer with generated GLB -->
+        <!-- iPad hero — Khriz Studio TCG on classic home-button iPad -->
         <div class="device-scene" id="device-scene">
-          <model-viewer
-            id="device-mv"
-            class="device-viewer"
-            src="assets/models/tablet.glb"
-            poster="assets/projects/juanadiaz.png"
-            alt="Tableta 3D interactiva mostrando sitios web"
-            data-i18n-aria="hero.deviceAria"
-            camera-controls
-            touch-action="pan-y"
-            auto-rotate
-            auto-rotate-delay="800"
-            rotation-per-second="12deg"
-            shadow-intensity="0.8"
-            shadow-softness="0.9"
-            exposure="1.1"
-            environment-image="neutral"
-            camera-orbit="-25deg 75deg 2.2m"
-            min-camera-orbit="auto 30deg auto"
-            max-camera-orbit="auto 150deg auto"
-            field-of-view="30deg"
-            interpolation-decay="50"
-            ar
-          >
-            <!-- poster fallback while loading -->
-            <div slot="poster" class="mv-poster">
-              <img src="assets/projects/juanadiaz.png" alt="" width="800" height="500" loading="eager" />
-              <div class="mv-poster-loader"></div>
-            </div>
-            <!-- progress bar slot -->
-            <div class="mv-progress" slot="progress-bar">
-              <div class="mv-progress-bar" id="mv-progress-bar"></div>
-            </div>
-          </model-viewer>
+          <div class="device-stage" id="device-stage" tabindex="0" role="img" data-i18n-aria="hero.deviceAria" aria-label="iPad mostrando el sitio de Khriz Studio TCG">
+            <img
+              class="device-ipad"
+              id="device-ipad"
+              src="assets/hero-ipad-tcg-cut.png"
+              alt=""
+              width="900"
+              height="1447"
+              draggable="false"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
           <p class="device-hint" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M11 15H6l7-14v8h5l-7 14v-8z"/></svg>
             <span data-i18n="hero.deviceHint">Arrastra para girar</span>
@@ -479,15 +457,6 @@
       </svg>
       <span class="wa-fab-label" data-i18n="contact.whatsappCta">Escribir por WhatsApp</span>
     </a>
-
-        <script type="importmap">
-      {
-        "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.module.min.js",
-          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
-        }
-      }
-    </script>
     <script type="module" src="js/main.js"></script>
   </body>
 </html>

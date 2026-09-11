@@ -430,77 +430,52 @@ body.nav-open .nav-toggle span:last-child {
   margin-top: 24px;
 }
 
-/* ── 3D Device Scene (model-viewer) ────────────────────────── */
+/* ── Hero iPad (drag tilt) ──────────────────────────────────── */
 .device-scene {
   position: relative;
-  /* NO overflow:hidden — let model-viewer orbit freely */
-  height: 420px;               /* mobile */
+  height: 460px;
   border-radius: 20px;
-  background: radial-gradient(ellipse at 50% 60%, rgba(90,110,180,0.10), transparent 70%),
-              radial-gradient(ellipse at 30% 20%, rgba(212,176,122,0.06), transparent 60%);
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(90,110,180,0.10), transparent 70%),
+    radial-gradient(ellipse at 30% 20%, rgba(212,176,122,0.06), transparent 60%);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  align-items: center;
+  justify-content: center;
+  /* room so rotated iPad never clips */
+  padding: 12px 8px 28px;
+  overflow: visible;
+  perspective: 1100px;
+  -webkit-perspective: 1100px;
 }
 
-/* model-viewer fills container */
-.device-viewer {
-  flex: 1;
-  width: 100%;
-  min-height: 0;
-  border-radius: 16px;
-  background: transparent;
-  --progress-bar-color: var(--accent);
-  --progress-bar-height: 2px;
-  --progress-mask: transparent;
-}
-
-/* Poster slot: blurred screenshot while GLB loads */
-.mv-poster {
-  position: absolute;
-  inset: 0;
+.device-stage {
+  width: min(100%, 340px);
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  overflow: hidden;
+  transform-style: preserve-3d;
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.mv-poster img {
+.device-stage:active {
+  cursor: grabbing;
+}
+
+.device-ipad {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  filter: blur(12px) brightness(0.35) saturate(0.6);
-  transform: scale(1.1);
-}
-
-.mv-poster-loader {
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  border: 2.5px solid rgba(212,176,122,0.25);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: mv-spin 0.9s linear infinite;
-}
-
-@keyframes mv-spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Progress bar in model-viewer slot */
-.mv-progress {
-  position: absolute;
-  inset: auto 24px 0 24px;
-  height: 2px;
-}
-
-.mv-progress-bar {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 0.3s;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  will-change: transform;
+  filter: drop-shadow(0 28px 48px rgba(0,0,0,0.55));
+  pointer-events: none;
 }
 
 .device-hint {
@@ -522,14 +497,19 @@ body.nav-open .nav-toggle span:last-child {
 
 @media (min-width: 920px) {
   .hero {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.05fr;
     min-height: calc(100vh - var(--header-h));
     padding: 0 0 40px;
-    gap: 40px;
+    gap: 28px;
   }
 
   .device-scene {
-    height: 580px;
+    height: 620px;
+    padding: 16px 24px 36px;
+  }
+
+  .device-stage {
+    width: min(100%, 420px);
   }
 }
 

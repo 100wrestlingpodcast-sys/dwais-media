@@ -1,7 +1,8 @@
-.DS_Store
-Thumbs.db
 *.log
-node_modules/
-dist/
-.vscode/
+.DS_Store
 .idea/
+.vscode/
+Thumbs.db
+assets/ipad-ref.png
+dist/
+node_modules/
