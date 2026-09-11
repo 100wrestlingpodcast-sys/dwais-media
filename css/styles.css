@@ -500,15 +500,15 @@ body.nav-open .nav-toggle span:last-child {
   background-image:
     repeating-linear-gradient(
       180deg,
-      rgba(40, 44, 50, 0.16) 0 1px,
+      rgba(40, 44, 50, 0.32) 0 1px,
       transparent 1px 13px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(40, 44, 50, 0.16) 0 1px,
+      rgba(40, 44, 50, 0.32) 0 1px,
       transparent 1px 17px
     );
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(230, 234, 238, 0.35);
 }
 
 .laptop-trackpad {
