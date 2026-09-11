@@ -86,8 +86,8 @@
             <div class="laptop-lid">
               <div class="laptop-bezel">
                 <span class="laptop-camera" aria-hidden="true"></span>
-                <div class="laptop-screen" aria-hidden="true">
-                  <div class="screen-ui">
+                <div class="laptop-screen">
+                  <div class="screen-ui" id="hero-screen-fallback">
                     <header class="screen-nav">
                       <span class="screen-brand" data-i18n="hero.screenBrand">Casa Norte</span>
                       <span class="screen-link" data-i18n="hero.screenNav">Colección</span>
@@ -102,6 +102,17 @@
                       <div class="screen-card c2"></div>
                       <div class="screen-card c3"></div>
                     </div>
+                  </div>
+                  <div
+                    class="hero-live"
+                    data-preview
+                    data-src="https://2kbsn.com"
+                    data-embed="true"
+                    data-hero="true"
+                    data-shot="assets/previews/bsn.webp"
+                  >
+                    <iframe class="preview-iframe" title="2K BSN" tabindex="-1" referrerpolicy="no-referrer"></iframe>
+                    <div class="preview-shield" aria-hidden="true"></div>
                   </div>
                 </div>
               </div>
@@ -123,14 +134,24 @@
         </div>
 
         <div class="work-grid">
-          <article class="project-card" data-project="cigars">
-            <div class="project-mock" aria-hidden="true">
-              <div class="browser">
+          <article class="project-card reveal" data-project="cigars">
+            <div
+              class="device-preview"
+              data-preview
+              data-src="https://juanadiazcigars.netlify.app"
+              data-embed="true"
+              data-shot="assets/previews/cigars.webp"
+            >
+              <div class="chrome" aria-hidden="true">
                 <span class="dots"></span>
-                <div class="mock mock-cigars">
-                  <p class="mock-serif">Juana Díaz</p>
-                  <p class="mock-gold">Cigars</p>
-                  <div class="mock-bar"></div>
+                <span class="chrome-url">juanadiazcigars.netlify.app</span>
+              </div>
+              <div class="preview-stage">
+                <iframe class="preview-iframe" title="Juana Díaz Cigars" tabindex="-1" referrerpolicy="no-referrer"></iframe>
+                <div class="preview-shield" aria-hidden="true"></div>
+                <div class="preview-fallback">
+                  <img src="assets/previews/cigars.webp" alt="" />
+                  <p class="preview-note" data-i18n="work.embedBlocked">Este sitio no permite vista previa incrustada. Ábrelo en una pestaña nueva.</p>
                 </div>
               </div>
             </div>
@@ -153,15 +174,24 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="tcg">
-            <div class="project-mock" aria-hidden="true">
-              <div class="browser">
+          <article class="project-card reveal" data-project="tcg">
+            <div
+              class="device-preview is-fallback"
+              data-preview
+              data-src="https://khrizstudiotcg.com/"
+              data-embed="false"
+              data-shot="assets/previews/khriz.webp"
+            >
+              <div class="chrome" aria-hidden="true">
                 <span class="dots"></span>
-                <div class="mock mock-tcg">
-                  <div class="fan">
-                    <i></i><i></i><i></i>
-                  </div>
-                  <p class="mock-label">Khriz Studio</p>
+                <span class="chrome-url">khrizstudiotcg.com</span>
+              </div>
+              <div class="preview-stage">
+                <iframe class="preview-iframe" title="Khriz Studio TCG" tabindex="-1" referrerpolicy="no-referrer"></iframe>
+                <div class="preview-shield" aria-hidden="true"></div>
+                <div class="preview-fallback">
+                  <img src="assets/previews/khriz.webp" alt="Khriz Studio TCG" />
+                  <p class="preview-note" data-i18n="work.embedBlocked">Este sitio no permite vista previa incrustada. Ábrelo en una pestaña nueva.</p>
                 </div>
               </div>
             </div>
@@ -184,15 +214,24 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="geek">
-            <div class="project-mock" aria-hidden="true">
-              <div class="browser">
+          <article class="project-card reveal" data-project="geek">
+            <div
+              class="device-preview"
+              data-preview
+              data-src="https://geekcollectorpr.com"
+              data-embed="true"
+              data-shot="assets/previews/geek.webp"
+            >
+              <div class="chrome" aria-hidden="true">
                 <span class="dots"></span>
-                <div class="mock mock-geek">
-                  <div class="tiles">
-                    <i></i><i></i><i></i><i></i><i></i><i></i>
-                  </div>
-                  <p class="mock-label">Geek Collector PR</p>
+                <span class="chrome-url">geekcollectorpr.com</span>
+              </div>
+              <div class="preview-stage">
+                <iframe class="preview-iframe" title="Geek Collector PR" tabindex="-1" referrerpolicy="no-referrer"></iframe>
+                <div class="preview-shield" aria-hidden="true"></div>
+                <div class="preview-fallback">
+                  <img src="assets/previews/geek.webp" alt="" />
+                  <p class="preview-note" data-i18n="work.embedBlocked">Este sitio no permite vista previa incrustada. Ábrelo en una pestaña nueva.</p>
                 </div>
               </div>
             </div>
@@ -215,13 +254,24 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="wrestling">
-            <div class="project-mock" aria-hidden="true">
-              <div class="browser">
+          <article class="project-card reveal" data-project="wrestling">
+            <div
+              class="device-preview"
+              data-preview
+              data-src="https://100wrestlingpodcast.com/es/inicio"
+              data-embed="true"
+              data-shot="assets/previews/wrestling.webp"
+            >
+              <div class="chrome" aria-hidden="true">
                 <span class="dots"></span>
-                <div class="mock mock-wrestling">
-                  <div class="wave"></div>
-                  <p class="mock-label">100% Wrestling</p>
+                <span class="chrome-url">100wrestlingpodcast.com</span>
+              </div>
+              <div class="preview-stage">
+                <iframe class="preview-iframe" title="100% Wrestling Podcast" tabindex="-1" referrerpolicy="no-referrer"></iframe>
+                <div class="preview-shield" aria-hidden="true"></div>
+                <div class="preview-fallback">
+                  <img src="assets/previews/wrestling.webp" alt="" />
+                  <p class="preview-note" data-i18n="work.embedBlocked">Este sitio no permite vista previa incrustada. Ábrelo en una pestaña nueva.</p>
                 </div>
               </div>
             </div>
@@ -244,13 +294,24 @@
             </div>
           </article>
 
-          <article class="project-card" data-project="bsn">
-            <div class="project-mock" aria-hidden="true">
-              <div class="browser">
+          <article class="project-card reveal" data-project="bsn">
+            <div
+              class="device-preview"
+              data-preview
+              data-src="https://2kbsn.com"
+              data-embed="true"
+              data-shot="assets/previews/bsn.webp"
+            >
+              <div class="chrome" aria-hidden="true">
                 <span class="dots"></span>
-                <div class="mock mock-bsn">
-                  <div class="court"></div>
-                  <p class="mock-label">2K BSN</p>
+                <span class="chrome-url">2kbsn.com</span>
+              </div>
+              <div class="preview-stage">
+                <iframe class="preview-iframe" title="2K BSN" tabindex="-1" referrerpolicy="no-referrer"></iframe>
+                <div class="preview-shield" aria-hidden="true"></div>
+                <div class="preview-fallback">
+                  <img src="assets/previews/bsn.webp" alt="" />
+                  <p class="preview-note" data-i18n="work.embedBlocked">Este sitio no permite vista previa incrustada. Ábrelo en una pestaña nueva.</p>
                 </div>
               </div>
             </div>
@@ -283,7 +344,7 @@
         </div>
 
         <div class="service-grid">
-          <article class="service-card">
+          <article class="service-card reveal">
             <p class="service-index">01</p>
             <h3 data-i18n="packages.presence.name">Presencia</h3>
             <p class="service-tag" data-i18n="packages.presence.tag">Landing de 1 página</p>
@@ -297,7 +358,7 @@
             <a class="btn btn-primary quote-btn" data-package="presence" href="https://wa.me/12106209860" target="_blank" rel="noopener noreferrer" data-i18n="services.quote">Pedir cotización</a>
           </article>
 
-          <article class="service-card featured">
+          <article class="service-card featured reveal">
             <p class="service-index">02</p>
             <h3 data-i18n="packages.business.name">Negocio</h3>
             <p class="service-tag" data-i18n="packages.business.tag">Sitio PYME de 4–6 páginas</p>
@@ -311,7 +372,7 @@
             <a class="btn btn-primary quote-btn" data-package="business" href="https://wa.me/12106209860" target="_blank" rel="noopener noreferrer" data-i18n="services.quote">Pedir cotización</a>
           </article>
 
-          <article class="service-card">
+          <article class="service-card reveal">
             <p class="service-index">03</p>
             <h3 data-i18n="packages.growth.name">Impulso</h3>
             <p class="service-tag" data-i18n="packages.growth.tag">Rediseño y conversión</p>

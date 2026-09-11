@@ -59,16 +59,35 @@ If the AJAX submit fails (for example, the site is not on Netlify and Formspree 
 - Dictionaries live in `js/strings.js` (`STRINGS.es` and `STRINGS.en`). Keep both trees identical.
 - Markup uses `data-i18n`, `data-i18n-placeholder`, and `data-i18n-aria`. `js/i18n.js` applies the active language and warns in the console if keys drift.
 
+## Live portfolio previews
+
+Work cards embed the real sites in a laptop/browser frame (scaled iframe, `pointer-events: none` so page scroll is not hijacked). **Ver sitio / View site** opens the live URL in a new tab.
+
+If a host sends `X-Frame-Options` or CSP `frame-ancestors` that blocks embedding, the card shows a **real screenshot** of that site plus a short message — never a generic stock thumbnail.
+
+Confirmed at build time:
+
+| Site | Preview |
+| --- | --- |
+| Juana Díaz Cigars | Live iframe |
+| Khriz Studio TCG | Fallback screenshot (`X-Frame-Options: SAMEORIGIN`) |
+| Geek Collector PR | Live iframe |
+| 100% Wrestling Podcast | Live iframe |
+| 2K BSN | Live iframe |
+
+Screenshots live in `assets/previews/`. Embed flags are in `js/config.js` (`PROJECTS`).
+
 ## Project structure
 
 ```
-index.html          # Single page
+index.html
 css/styles.css
-js/config.js        # Email, WhatsApp, form provider
-js/strings.js       # ES / EN copy
-js/i18n.js          # Language engine
-js/main.js          # Nav, form, laptop tilt, WhatsApp URLs
+js/config.js        # Email, WhatsApp, form provider, PROJECTS embed flags
+js/strings.js
+js/i18n.js
+js/main.js          # Nav, i18n, form, live preview iframes
 assets/favicon.svg
+assets/previews/    # Real screenshots (iframe fallbacks)
 netlify.toml
 ```
 

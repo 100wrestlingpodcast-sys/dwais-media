@@ -43,6 +43,9 @@ export const STRINGS = {
       collapse: "Cerrar caso",
       problem: "Problema",
       solution: "Solución",
+      embedBlocked: "Este sitio no permite vista previa incrustada. Ábrelo en una pestaña nueva.",
+      previewLive: "Vista previa en vivo",
+      previewShot: "Captura del sitio en vivo",
     },
     projects: {
       cigars: {
@@ -198,11 +201,14 @@ export const STRINGS = {
       kicker: "Work",
       title: "Sites already out in the world",
       lede: "Five live projects — local brands, retail, media, and community in Puerto Rico.",
-      live: "Live site",
+      live: "View site",
       expand: "View case",
       collapse: "Close case",
       problem: "Problem",
       solution: "Solution",
+      embedBlocked: "This site blocks embedded previews. Open it in a new tab.",
+      previewLive: "Live preview",
+      previewShot: "Live site screenshot",
     },
     projects: {
       cigars: {
