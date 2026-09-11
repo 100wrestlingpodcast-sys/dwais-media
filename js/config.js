@@ -10,7 +10,7 @@ export const CONFIG = {
   brand: "DWais Media",
   email: "dwaisemedia@gmail.com",
   whatsappNumber: "12106209860",
-  whatsappDisplay: "+1 210-620-9860",
+  // Phone number is never shown in the UI — only used for wa.me links.
   formProvider: "netlify",
   formspreeEndpoint: "",
   formName: "contact",

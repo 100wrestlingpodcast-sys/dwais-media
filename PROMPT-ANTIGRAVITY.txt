@@ -1,4 +1,27 @@
-Lee ANTIGRAVITY.md y AGENTS.md en este repo.
-Refina la web DWais Media siguiendo esas reglas (sin tagline, sin precios, ES/EN).
-Prioridad: hero premium, cards con screenshots reales, móvil, WhatsApp sticky.
-Al terminar: commit + push a main para Netlify.
+Lee ANTIGRAVITY.md. Aplica ESTOS cambios YA en este repo (~/Sites/dwais-media), luego commit + push a main (Netlify).
+
+## 1) Móvil — menos espacio vacío
+Revisa la versión mobile: reduce paddings/gaps grandes en hero, sections y device. Que no haya “huecos” excesivos entre bloques.
+
+## 2) Modelo 3D del dispositivo (prioridad alta)
+El laptop/tablet CSS actual NO basta. Sustitúyelo por un modelo 3D IMPRECABLE y DETALLADO que el usuario pueda GIRAR (orbit / drag).
+Opciones válidas: Google <model-viewer> con un .glb de laptop/tablet de alta calidad en assets/models/, o Three.js + OrbitControls con modelo real.
+- Pantalla del modelo puede mostrar una de nuestras capturas (assets/projects/).
+- Debe verse premium en desktop y móvil (en móvil: rotar sin romper el scroll).
+- Hint: “Arrastra para girar” / “Drag to rotate” (i18n).
+
+## 3) Logo WhatsApp
+El ícono del botón WhatsApp (FAB y/o botones de contacto) se ve mal. Usa el path SVG oficial de WhatsApp, nítido, bien centrado, buen contraste.
+
+## 4) NO mostrar el número de teléfono
+Donde dice “Respuesta más rápida” / WhatsApp: debe ser un BOTÓN con logo de WhatsApp + texto tipo “Escribir por WhatsApp”.
+NUNCA muestres +1 210-620-9860 ni el número en el UI. El link sigue siendo https://wa.me/12106209860 por debajo.
+Quita cualquier whatsapp-display / whatsappDisplay en la UI. Revisa js/main.js y js/config.js.
+
+## 5) Correo = botón mailto
+La tarjeta de correo debe ser un BOTÓN claro (ej. “Enviar correo”) que abra mailto:dwaisemedia@gmail.com (app de correo del dispositivo). No hace falta enseñar el email como texto suelto si queda mejor como CTA; el href mailto es obligatorio.
+
+## Reglas fijas
+DWais Media, sin tagline, sin precios, ES default + EN toggle, screenshots reales en portfolio, push a main.
+
+Cuando termines: resume qué cambiaste y confirma el push.

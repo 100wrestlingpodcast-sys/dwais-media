@@ -29,7 +29,8 @@ export const STRINGS = {
       sub: "Diseñamos y desarrollamos sitios web para marcas en Puerto Rico — modernos, rápidos y listos para crecer.",
       ctaWork: "Ver trabajos",
       ctaWhatsapp: "Hablar por WhatsApp",
-      deviceAria: "Mockup 3D de una laptop mostrando un sitio web",
+      deviceAria: "Laptop 3D interactiva mostrando un sitio web",
+      deviceHint: "Arrastra para girar",
     },
     work: {
       kicker: "Trabajo",
@@ -133,7 +134,9 @@ export const STRINGS = {
       lede: "Cuéntanos el proyecto. Respondemos por WhatsApp o correo — Puerto Rico y clientes bilingües.",
       whatsapp: "WhatsApp",
       whatsappHint: "Respuesta más rápida",
+      whatsappCta: "Escribir por WhatsApp",
       emailLabel: "Correo",
+      emailCta: "Enviar correo",
       or: "o escríbenos aquí",
       form: {
         name: "Nombre",
@@ -186,7 +189,8 @@ export const STRINGS = {
       sub: "We design and develop websites for brands in Puerto Rico — modern, fast, and built to grow.",
       ctaWork: "View work",
       ctaWhatsapp: "Chat on WhatsApp",
-      deviceAria: "3D laptop mockup showing a website on screen",
+      deviceAria: "Interactive 3D laptop showing a website",
+      deviceHint: "Drag to rotate",
     },
     work: {
       kicker: "Work",
@@ -290,7 +294,9 @@ export const STRINGS = {
       lede: "Tell us about the project. We reply on WhatsApp or email — Puerto Rico and bilingual clients.",
       whatsapp: "WhatsApp",
       whatsappHint: "Fastest reply",
+      whatsappCta: "Message on WhatsApp",
       emailLabel: "Email",
+      emailCta: "Send an email",
       or: "or write us here",
       form: {
         name: "Name",

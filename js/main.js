@@ -6,6 +6,7 @@ import {
   readStoredLang,
   t,
 } from "./i18n.js";
+import { initDevice3D } from "./device3d.js";
 
 assertLocalesInSync();
 
@@ -20,24 +21,21 @@ function waUrl(message) {
 
 function syncContactLinks() {
   const general = waUrl(t(state.lang, "wa.general"));
+  // Update all WA links (hero CTA, contact card, FAB)
   document.querySelectorAll("#cta-whatsapp, #contact-whatsapp, #wa-fab").forEach((el) => {
     el.setAttribute("href", general);
   });
 
+  // Update per-package WA links
   document.querySelectorAll(".quote-btn").forEach((btn) => {
     const pkg = btn.getAttribute("data-package");
     btn.setAttribute("href", waUrl(t(state.lang, `wa.${pkg}`)));
   });
 
+  // Email link (href only, no display text)
   const emailHref = `mailto:${CONFIG.email}`;
   const emailLink = document.getElementById("contact-email");
   if (emailLink) emailLink.setAttribute("href", emailHref);
-
-  const emailDisplay = document.getElementById("email-display");
-  if (emailDisplay) emailDisplay.textContent = CONFIG.email;
-
-  const waDisplay = document.getElementById("whatsapp-display");
-  if (waDisplay) waDisplay.textContent = CONFIG.whatsappDisplay;
 }
 
 function setLang(lang) {
@@ -116,25 +114,6 @@ function initCases() {
       panel.hidden = !next;
       refreshCaseToggleLabels();
     });
-  });
-}
-
-function initLaptop() {
-  const scene = document.getElementById("device-scene");
-  const laptop = document.getElementById("laptop");
-  if (!scene || !laptop) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  const onMove = (e) => {
-    const rect = scene.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    laptop.style.transform = `rotateX(${10 - y * 10}deg) rotateY(${-22 + x * 16}deg) rotateZ(3deg)`;
-  };
-
-  scene.addEventListener("pointermove", onMove);
-  scene.addEventListener("pointerleave", () => {
-    laptop.style.transform = "";
   });
 }
 
@@ -226,11 +205,12 @@ function initReveal() {
         }
       });
     },
-    { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
   );
   els.forEach((el) => io.observe(el));
 }
 
+// ── Bootstrap ──────────────────────────────────────────────────
 document.getElementById("year").textContent = String(new Date().getFullYear());
 
 setLang(state.lang);
@@ -238,7 +218,9 @@ initLangToggle();
 initNav();
 initSmoothScroll();
 initCases();
-initLaptop();
 initForm();
 initHeaderScroll();
 initReveal();
+
+// 3D Device — loads Three.js async; gracefully skipped if container absent
+initDevice3D("device-scene");
