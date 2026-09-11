@@ -6,7 +6,6 @@ import {
   readStoredLang,
   t,
 } from "./i18n.js";
-import { initDevice3D } from "./device3d.js";
 
 assertLocalesInSync();
 
@@ -211,6 +210,7 @@ function initReveal() {
 }
 
 // ── Bootstrap ──────────────────────────────────────────────────
+document.documentElement.classList.add("js-ready");
 document.getElementById("year").textContent = String(new Date().getFullYear());
 
 setLang(state.lang);
@@ -222,5 +222,7 @@ initForm();
 initHeaderScroll();
 initReveal();
 
-// 3D Device — loads Three.js async; gracefully skipped if container absent
-initDevice3D("device-scene");
+// 3D Device — dynamic import so a Three.js failure never blanks the page
+import("./device3d.js")
+  .then((m) => m.initDevice3D("device-scene"))
+  .catch((err) => console.warn("Device 3D skipped:", err));
