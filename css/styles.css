@@ -1067,3 +1067,18 @@ body.nav-open .nav-toggle span:last-child {
     transition: none;
   }
 }
+
+
+/* Real project screenshots in browser chrome */
+.project-mock .browser {
+  overflow: hidden;
+}
+.project-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  background: #0a0b0d;
+}
