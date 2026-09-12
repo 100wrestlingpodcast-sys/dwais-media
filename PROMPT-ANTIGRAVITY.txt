@@ -1,21 +1,49 @@
-URGENTE — hero 3D (DWais Media, este repo). Lee ANTIGRAVITY.md. Luego:
+URGENTE — hero iPad (DWais Media). Lee ANTIGRAVITY.md y AGENTS.md. Luego haz EXACTAMENTE esto.
 
-## Problema
-El laptop Three.js actual NO convence. Al girar se CORTA porque el frame/container es estrecho (overflow hidden). Alberto quiere una TABLETA REAL, no un mock CSS/procedural flojo.
+## Feedback de Alberto (obligatorio)
+1. El hero ACTUAL NO gusta.
+2. La captura de la web en la pantalla del iPad se ve MALÍSIMA (pixelada, torcida, crop raro, o warpeada). Hay que rehacer el hero hasta que se vea premium.
 
-## Qué hacer
-1. Quita el laptop Three.js actual del hero (js/device3d.js puede quedarse sin usarse o eliminarse si ya no hace falta).
-2. Pon una TABLETA 3D REALISTA y GIRATORIA:
-   - Preferido: <model-viewer> (Google) + archivo .glb de iPad/tablet de alta calidad en assets/models/
-   - Descarga un modelo GLB/GLTF libre y bueno (Sketchfab CC / Poly Pizza / similar). Debe verse como tableta real (bezel, cámara, grosor).
-   - camera-controls + auto-rotate suave; en móvil que se pueda girar sin romper el scroll vertical.
-3. Frame MÁS AMPLIO: el contenedor del hero device debe ser más wide/alto y SIN cortar el modelo al orbitar (quita overflow:hidden agresivo o dale más padding/altura). En desktop que respire; en móvil que no se coma toda la pantalla.
-4. En la pantalla de la tableta, si el modelo lo permite, usa una de nuestras capturas (assets/projects/*.png). Si el GLB ya trae pantalla, ok; si no, texturiza o superpón con cuidado.
-5. Hint i18n: “Arrastra para girar” / “Drag to rotate”.
-6. NO rompas el sitio: mantén el importmap / dynamic import pattern del fix 49619bf para que un fallo de 3D NUNCA deje la página en negro. Las secciones .reveal deben seguir visibles si el 3D falla.
-7. commit + push a main (Netlify).
+Live: https://dwaisemedia.netlify.app  
+Commit malo a corregir: el iPad compuesto `assets/hero-ipad-tcg-cut.png` (foto warpeada). NO reutilices ese PNG como solución final.
+
+## Objetivo visual
+Un iPad clásico negro (home button, cámara arriba) en el hero, con el sitio **Khriz Studio TCG** nítido en la pantalla.
+Debe verse como un mockup de portfolio de agencia (Apple-style / Dribbble), NO como una foto editada a lo bruto.
+
+## Cómo hacerlo (elige este approach — NO warpees una foto)
+1. **Quita** el hero actual basado en `hero-ipad-tcg-cut.png` / tilt CSS de esa foto.
+2. Construye un **mockup CSS/HTML de iPad clásico de frente** (o 3/4 muy sutil):
+   - Bezel negro grueso arriba/abajo
+   - Home button circular abajo
+   - Cámara centrada arriba
+   - Esquinas redondeadas realistas
+   - Sombra suave premium
+   - Contenedor ANCHO para que al hacer tilt/parallax NO se corte
+3. **Pantalla = captura NUEVA y NÍTIDA** de https://khrizstudiotcg.com/
+   - Toma screenshot fresco a alta resolución (mín. ~1600px de ancho; retina si puedes).
+   - Viewport desktop de la home (hero “BIENVENIDOS” visible, tipografía legible).
+   - Guárdala como `assets/projects/khrizstudio.png` (reemplaza si la actual es floja) Y/O `assets/hero-screen-tcg.png` dedicada al hero.
+   - `object-fit: cover; object-position: top center` dentro del rectángulo de la pantalla.
+   - La web en pantalla debe verse CLARA: texto legible, sin blur, sin distorsión de perspectiva agresiva, sin estirar.
+4. Interacción opcional y limpia:
+   - Micro tilt al arrastrar (rotateY/X suave, máx ~15–20°) O auto-tilt muy sutil.
+   - Respeta `prefers-reduced-motion` (sin movimiento).
+   - Hint i18n: “Arrastra para girar” / “Drag to rotate”.
+5. NO uses perspective-warp de una foto de stock del iPad (ese approach fue el que falló).
+6. NO uses model-viewer/GLB stub de baja calidad ni Three.js que pueda romper la página.
+7. Mantén el bootstrap seguro: `.reveal` visible aunque falle JS; no dejes la página en negro.
+
+## Calidad — checklist antes de pushear
+- [ ] En desktop, el texto “BIENVENIDOS” (o el hero del TCG) se lee sin zoom.
+- [ ] La captura no se ve borrosa en pantalla Retina.
+- [ ] El iPad no se corta al inclinarse.
+- [ ] Mobile: el device no aplasta el copy del hero.
+- [ ] Hard refresh en https://dwaisemedia.netlify.app se ve premium.
 
 ## No tocar
-Sin tagline, sin precios, sin mostrar el teléfono, botones WhatsApp/correo como están (CTA), ES/EN, screenshots reales del portfolio.
+Sin tagline, sin precios, sin mostrar el número de teléfono, CTAs WhatsApp/correo, ES/EN, las 5 cards del portfolio con screenshots reales.
 
-Cuando termines: confirma URL del modelo usado y el commit.
+## Entrega
+`git add -A && git commit -m "…" && git push origin main`  
+Cuando termines: resume qué hiciste + commit hash.

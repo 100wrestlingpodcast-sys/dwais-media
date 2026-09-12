@@ -6,3 +6,4 @@ Thumbs.db
 assets/ipad-ref.png
 dist/
 node_modules/
+.chrome-test/

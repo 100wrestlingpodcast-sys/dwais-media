@@ -218,8 +218,8 @@ function initDeviceTilt() {
   initReveal();
 
   const stage = document.getElementById("device-stage");
-  const img = document.getElementById("device-ipad");
-  if (!stage || !img) return;
+  const device = document.getElementById("device-ipad");
+  if (!stage || !device) return;
 
   const syncAria = () => {
     stage.setAttribute("aria-label", t(state.lang, "hero.deviceAria"));
@@ -229,19 +229,21 @@ function initDeviceTilt() {
   // this covers the role=img host).
   document.addEventListener("dwais:lang", syncAria);
 
-  let rotY = -18;
-  let rotX = 6;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Front-facing with subtle 3/4 depth
+  let rotY = reduced ? 0 : -5;
+  let rotX = reduced ? 0 : 2.5;
   let targetY = rotY;
   let targetX = rotX;
   let dragging = false;
   let lastX = 0;
   let lastY = 0;
-  let auto = true;
+  let auto = !reduced;
   let autoDir = 1;
-  let reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const apply = () => {
-    img.style.transform =
+    device.style.transform =
       "rotateY(" + rotY.toFixed(2) + "deg) rotateX(" + rotX.toFixed(2) + "deg)";
   };
   apply();
@@ -259,13 +261,25 @@ function initDeviceTilt() {
     const dy = e.clientY - lastY;
     lastX = e.clientX;
     lastY = e.clientY;
-    targetY += dx * 0.35;
-    targetX -= dy * 0.25;
-    targetY = Math.max(-42, Math.min(42, targetY));
-    targetX = Math.max(-14, Math.min(18, targetX));
+    targetY += dx * 0.22;
+    targetX -= dy * 0.18;
+    targetY = Math.max(-18, Math.min(18, targetY));
+    targetX = Math.max(-8, Math.min(10, targetX));
   };
-  const onPointerUp = () => {
+  let idleTimer = null;
+  const onPointerUp = (e) => {
     dragging = false;
+    try {
+      if (e?.pointerId && stage.hasPointerCapture?.(e.pointerId)) {
+        stage.releasePointerCapture(e.pointerId);
+      }
+    } catch (_) {}
+    clearTimeout(idleTimer);
+    if (!reduced) {
+      idleTimer = setTimeout(() => {
+        auto = true;
+      }, 4000);
+    }
   };
 
   stage.addEventListener("pointerdown", onPointerDown);
@@ -273,15 +287,40 @@ function initDeviceTilt() {
   stage.addEventListener("pointerup", onPointerUp);
   stage.addEventListener("pointercancel", onPointerUp);
 
+  stage.addEventListener("keydown", (e) => {
+    if (reduced) return;
+    if (e.key === "ArrowLeft") {
+      targetY = Math.max(-18, targetY - 3);
+      auto = false;
+      e.preventDefault();
+    } else if (e.key === "ArrowRight") {
+      targetY = Math.min(18, targetY + 3);
+      auto = false;
+      e.preventDefault();
+    } else if (e.key === "ArrowUp") {
+      targetX = Math.min(10, targetX + 2);
+      auto = false;
+      e.preventDefault();
+    } else if (e.key === "ArrowDown") {
+      targetX = Math.max(-8, targetX - 2);
+      auto = false;
+      e.preventDefault();
+    }
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(() => {
+      auto = true;
+    }, 4000);
+  });
+
   const tick = () => {
     if (!reduced && auto && !dragging) {
-      targetY += 0.08 * autoDir;
-      if (targetY > 22) autoDir = -1;
-      if (targetY < -28) autoDir = 1;
-      targetX = 6 + Math.sin((performance.now() / 4000) * Math.PI * 2) * 2;
+      targetY += 0.035 * autoDir;
+      if (targetY > 6) autoDir = -1;
+      if (targetY < -8) autoDir = 1;
+      targetX = 2.5 + Math.sin((performance.now() / 4500) * Math.PI * 2) * 1.5;
     }
-    rotY += (targetY - rotY) * 0.12;
-    rotX += (targetX - rotX) * 0.12;
+    rotY += (targetY - rotY) * 0.09;
+    rotX += (targetX - rotX) * 0.09;
     apply();
     requestAnimationFrame(tick);
   };

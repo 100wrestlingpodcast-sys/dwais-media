@@ -80,17 +80,32 @@
         <!-- iPad hero — Khriz Studio TCG on classic home-button iPad -->
         <div class="device-scene" id="device-scene">
           <div class="device-stage" id="device-stage" tabindex="0" role="img" data-i18n-aria="hero.deviceAria" aria-label="iPad mostrando el sitio de Khriz Studio TCG">
-            <img
-              class="device-ipad"
-              id="device-ipad"
-              src="assets/hero-ipad-tcg-cut.png"
-              alt=""
-              width="900"
-              height="1447"
-              draggable="false"
-              loading="eager"
-              decoding="async"
-            />
+            <div class="ipad-mockup" id="device-ipad">
+              <div class="ipad-top-bar" aria-hidden="true">
+                <span class="ipad-camera"></span>
+                <span class="ipad-sensor"></span>
+              </div>
+              <div class="ipad-screen-bezel">
+                <div class="ipad-screen">
+                  <img
+                    class="ipad-screen-shot"
+                    src="assets/hero-screen-tcg.png"
+                    alt="Khriz Studio TCG website"
+                    width="1600"
+                    height="1200"
+                    draggable="false"
+                    loading="eager"
+                    decoding="async"
+                  />
+                  <div class="ipad-glare" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="ipad-bottom-bar" aria-hidden="true">
+                <div class="ipad-home-btn">
+                  <span class="ipad-home-icon"></span>
+                </div>
+              </div>
+            </div>
           </div>
           <p class="device-hint" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M11 15H6l7-14v8h5l-7 14v-8z"/></svg>

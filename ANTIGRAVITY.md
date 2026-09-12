@@ -39,4 +39,14 @@ Respeta `prefers-reduced-motion`.
 3. Netlify redeploy automático.
 
 ## Tarea actual
-Refina visualmente la web: hero más premium, cards/screenshots más nítidos, spacing/motion sutil, WhatsApp sticky cómodo en móvil, servicios y contacto claros. Mantén i18n y las reglas fijas.
+**Hero iPad — rehacer con calidad de agencia (prioridad #1).**
+
+Feedback de Alberto: el hero actual NO gusta; la captura de la web en la pantalla se ve malísima.
+
+Haz lo que dice `PROMPT-ANTIGRAVITY.txt` al detalle:
+- Tirar el PNG compuesto warpeado (`hero-ipad-tcg-cut.png`) como solución.
+- Mockup CSS de iPad clásico (home button) de frente / 3/4 sutil.
+- Screenshot FRESCO y NÍTIDO de https://khrizstudiotcg.com/ en la pantalla (`object-fit: cover; object-position: top`).
+- Sin warp de foto de stock. Sin GLB/model-viewer flojo. Sin romper i18n ni el sitio.
+- Push a `main` cuando pase el checklist de nitidez.
+
