@@ -156,8 +156,8 @@ export const STRINGS = {
     },
     "studio": {
       "kicker": "Detrás de DWais Media",
-      "title": "Hola, soy Albert.",
-      "body": "Soy creador de 100% Wrestling Podcast y organizador de 2K BSN. Diseño sitios para que negocios y comunidades tengan un espacio propio, con su identidad y una forma clara de conectar.",
+      "title": "Hola, somos DWais Media.",
+      "body": "Tu negocio tiene algo único que ofrecer. Nuestra misión es hacerlo brillar en el mundo digital con una web que refleje su esencia, capte la atención de tus clientes y les invite a conectar contigo. Queremos ayudarte a convertir tu visión en una presencia digital de la que te sientas orgulloso.",
       "step1": "Hablamos de tu idea",
       "detail1": "Conocemos tu negocio y definimos lo que necesita tu web.",
       "step2": "Diseñamos y revisamos",
@@ -322,8 +322,8 @@ export const STRINGS = {
     },
     "studio": {
       "kicker": "Behind DWais Media",
-      "title": "Hi, I’m Albert.",
-      "body": "I’m the creator of 100% Wrestling Podcast and organizer of 2K BSN. I design websites that give businesses and communities a place of their own, with their identity and a clear way to connect.",
+      "title": "Hi, we’re DWais Media.",
+      "body": "Your business has something unique to offer. Our mission is to help it shine online with a website that reflects its character, captures your customers’ attention, and invites them to connect with you. We’re here to turn your vision into a digital presence you can be proud of.",
       "step1": "Tell us about your idea",
       "detail1": "We get to know your business and define what your website needs.",
       "step2": "Design and review",
