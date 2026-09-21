@@ -7,6 +7,7 @@ const ATTRS = [
   ["data-i18n-placeholder", "placeholder"],
   ["data-i18n-aria", "ariaLabel"],
   ["data-i18n-title", "title"],
+  ["data-i18n-alt", "alt"],
   ["data-i18n-value", "value"],
 ];
 

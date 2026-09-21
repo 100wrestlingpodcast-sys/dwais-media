@@ -42,19 +42,8 @@ function setLang(lang) {
   persistLang(state.lang);
   applyI18n(state.lang);
   syncContactLinks();
-  refreshCaseToggleLabels();
-  document.dispatchEvent(new CustomEvent("dwais:lang"));
-}
 
-function refreshCaseToggleLabels() {
-  document.querySelectorAll(".case-toggle").forEach((btn) => {
-    const open = btn.getAttribute("aria-expanded") === "true";
-    const label = btn.querySelector("[data-i18n]");
-    if (label) {
-      label.setAttribute("data-i18n", open ? "work.collapse" : "work.expand");
-      label.textContent = t(state.lang, open ? "work.collapse" : "work.expand");
-    }
-  });
+  document.dispatchEvent(new CustomEvent("dwais:lang"));
 }
 
 function initLangToggle() {
@@ -67,24 +56,38 @@ function initNav() {
   const toggle = document.getElementById("nav-toggle");
   const nav = document.getElementById("nav");
   if (!toggle || !nav) return;
-
-  const close = () => {
-    document.body.classList.remove("nav-open");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", t(state.lang, "nav.open"));
-  };
-
-  toggle.addEventListener("click", () => {
-    const open = !document.body.classList.contains("nav-open");
-    document.body.classList.toggle("nav-open", open);
+  const mobile = window.matchMedia("(max-width: 819px)");
+  const sync = () => {
+    const open = mobile.matches && document.body.classList.contains("nav-open");
+    nav.inert = mobile.matches && !open;
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", t(state.lang, open ? "nav.close" : "nav.open"));
+  };
+  const close = (restore = false) => {
+    document.body.classList.remove("nav-open");
+    if (restore) toggle.focus();
+    sync();
+  };
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("nav-open"); sync();
   });
-
-  nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") close();
+  nav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => close()));
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && document.body.classList.contains("nav-open")) close(true);
   });
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".site-header")) close();
+  });
+  document.addEventListener("focusin", e => {
+    if (!e.target.closest(".site-header")) close();
+  });
+  document.addEventListener("dwais:lang", sync);
+  mobile.addEventListener("change", () => {
+    if (nav.contains(document.activeElement) && mobile.matches) toggle.focus();
+    close();
+  });
+  sync();
+  document.documentElement.classList.add("nav-ready");
 }
 
 function initSmoothScroll() {
@@ -95,24 +98,10 @@ function initSmoothScroll() {
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" });
+      target.setAttribute("tabindex", "-1");
+      target.focus({ preventScroll: true });
       history.replaceState(null, "", id);
-    });
-  });
-}
-
-function initCases() {
-  document.querySelectorAll(".project-card").forEach((card) => {
-    const btn = card.querySelector(".case-toggle");
-    const panel = card.querySelector(".case");
-    if (!btn || !panel) return;
-
-    btn.addEventListener("click", () => {
-      const open = btn.getAttribute("aria-expanded") === "true";
-      const next = !open;
-      btn.setAttribute("aria-expanded", String(next));
-      panel.hidden = !next;
-      refreshCaseToggleLabels();
     });
   });
 }
@@ -192,150 +181,45 @@ function initHeaderScroll() {
   window.addEventListener("scroll", onScroll, { passive: true });
 }
 
+// Content is always visible. Reveal is a short entrance effect, never a hiding gate.
 function initReveal() {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const els = document.querySelectorAll(".reveal");
-  if (!els.length) return;
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          io.unobserve(e.target);
-        }
-      });
-    },
-    { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
-  );
-  els.forEach((el) => io.observe(el));
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (reduced.matches || !("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      if (!reduced.matches) entry.target.animate(
+        [{ opacity: 0.65, transform: "translateY(12px)" }, { opacity: 1, transform: "none" }],
+        { duration: 420, easing: "ease-out" }
+      );
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 }
 
-/**
- * Hero iPad: drag-to-tilt (CSS 3D). Reveal always runs so sections
- * never stay stuck at opacity 0 if JS partially fails.
- */
+// Decorative pointer tilt only: no capture, no drag and no continuous animation loop.
 function initDeviceTilt() {
-  initReveal();
-
   const stage = document.getElementById("device-stage");
   const device = document.getElementById("device-ipad");
   if (!stage || !device) return;
-
-  const syncAria = () => {
-    stage.setAttribute("aria-label", t(state.lang, "hero.deviceAria"));
-  };
-  syncAria();
-  // Keep aria in sync when language toggles (setLang already re-applies i18n;
-  // this covers the role=img host).
-  document.addEventListener("dwais:lang", syncAria);
-
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // Front-facing with subtle 3/4 depth
-  let rotY = reduced ? 0 : -5;
-  let rotX = reduced ? 0 : 2.5;
-  let targetY = rotY;
-  let targetX = rotX;
-  let dragging = false;
-  let lastX = 0;
-  let lastY = 0;
-  let auto = !reduced;
-  let autoDir = 1;
-
-  const apply = () => {
-    device.style.transform =
-      "rotateY(" + rotY.toFixed(2) + "deg) rotateX(" + rotX.toFixed(2) + "deg)";
-  };
-  apply();
-
-  const onPointerDown = (e) => {
-    dragging = true;
-    auto = false;
-    lastX = e.clientX;
-    lastY = e.clientY;
-    stage.setPointerCapture?.(e.pointerId);
-  };
-  const onPointerMove = (e) => {
-    if (!dragging) return;
-    const dx = e.clientX - lastX;
-    const dy = e.clientY - lastY;
-    lastX = e.clientX;
-    lastY = e.clientY;
-    targetY += dx * 0.22;
-    targetX -= dy * 0.18;
-    targetY = Math.max(-18, Math.min(18, targetY));
-    targetX = Math.max(-8, Math.min(10, targetX));
-  };
-  let idleTimer = null;
-  const onPointerUp = (e) => {
-    dragging = false;
-    try {
-      if (e?.pointerId && stage.hasPointerCapture?.(e.pointerId)) {
-        stage.releasePointerCapture(e.pointerId);
-      }
-    } catch (_) {}
-    clearTimeout(idleTimer);
-    if (!reduced) {
-      idleTimer = setTimeout(() => {
-        auto = true;
-      }, 4000);
-    }
-  };
-
-  stage.addEventListener("pointerdown", onPointerDown);
-  stage.addEventListener("pointermove", onPointerMove);
-  stage.addEventListener("pointerup", onPointerUp);
-  stage.addEventListener("pointercancel", onPointerUp);
-
-  stage.addEventListener("keydown", (e) => {
-    if (reduced) return;
-    if (e.key === "ArrowLeft") {
-      targetY = Math.max(-18, targetY - 3);
-      auto = false;
-      e.preventDefault();
-    } else if (e.key === "ArrowRight") {
-      targetY = Math.min(18, targetY + 3);
-      auto = false;
-      e.preventDefault();
-    } else if (e.key === "ArrowUp") {
-      targetX = Math.min(10, targetX + 2);
-      auto = false;
-      e.preventDefault();
-    } else if (e.key === "ArrowDown") {
-      targetX = Math.max(-8, targetX - 2);
-      auto = false;
-      e.preventDefault();
-    }
-    clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      auto = true;
-    }, 4000);
-  });
-
-  const tick = () => {
-    if (!reduced && auto && !dragging) {
-      targetY += 0.035 * autoDir;
-      if (targetY > 6) autoDir = -1;
-      if (targetY < -8) autoDir = 1;
-      targetX = 2.5 + Math.sin((performance.now() / 4500) * Math.PI * 2) * 1.5;
-    }
-    rotY += (targetY - rotY) * 0.09;
-    rotX += (targetX - rotX) * 0.09;
-    apply();
-    requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
+  const enabled = window.matchMedia("(min-width: 980px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+  const reset = () => { device.style.transform = "none"; };
+  stage.addEventListener("pointermove", e => {
+    if (!enabled.matches) return;
+    const rect = stage.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    device.style.transform = `rotateY(${x * 6}deg) rotateX(${-y * 4}deg)`;
+  }, { passive: true });
+  stage.addEventListener("pointerleave", reset);
+  enabled.addEventListener("change", reset);
 }
 
-// ── Bootstrap ──────────────────────────────────────────────────
-document.documentElement.classList.add("js-ready");
-document.getElementById("year").textContent = String(new Date().getFullYear());
-
-setLang(state.lang);
-initLangToggle();
-initNav();
-initSmoothScroll();
-initCases();
-initForm();
-initHeaderScroll();
-initDeviceTilt();
+// Isolated enhancements: failure of one cannot blank the page or block the others.
+const year = document.getElementById("year");
+if (year) year.textContent = String(new Date().getFullYear());
+for (const init of [() => setLang(state.lang), initLangToggle, initNav,
+  initSmoothScroll, initForm, initHeaderScroll, initReveal, initDeviceTilt]) {
+  try { init(); } catch (error) { console.error("Enhancement unavailable", error); }
+}
