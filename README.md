@@ -1,6 +1,6 @@
-# DWais Media
+# DiWAISE Media
 
-One-page bilingual portfolio for **DWais Media** (Spanish default, English toggle). Static HTML/CSS/JS — no build step. Ready for GitHub → Netlify.
+One-page bilingual portfolio for **DiWAISE Media** (Spanish default, English toggle). Static HTML/CSS/JS — no build step. Ready for GitHub → Netlify.
 
 ## Run locally
 

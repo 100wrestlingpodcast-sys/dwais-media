@@ -2,8 +2,8 @@
 export const STRINGS = {
   "es": {
     "meta": {
-      "title": "DWais Media",
-      "description": "DWais Media diseña sitios web para marcas en Puerto Rico. Presencia digital clara, bilingüe y lista para crecer."
+      "title": "DiWAISE Media",
+      "description": "DiWAISE Media diseña sitios web para marcas en Puerto Rico. Presencia digital clara, bilingüe y lista para crecer."
     },
     "skip": "Saltar al contenido",
     "nav": {
@@ -115,10 +115,10 @@ export const STRINGS = {
       }
     },
     "wa": {
-      "presence": "Hola, me interesa el paquete Presencia (landing de 1 página) con DWais Media.",
-      "business": "Hola, me interesa el paquete Negocio (sitio de 4–6 páginas) con DWais Media.",
-      "growth": "Hola, me interesa el paquete Impulso (rediseño y conversión) con DWais Media.",
-      "general": "Hola, me gustaría hablar de un proyecto web con DWais Media."
+      "presence": "Hola, me interesa el paquete Presencia (landing de 1 página) con DiWAISE Media.",
+      "business": "Hola, me interesa el paquete Negocio (sitio de 4–6 páginas) con DiWAISE Media.",
+      "growth": "Hola, me interesa el paquete Impulso (rediseño y conversión) con DiWAISE Media.",
+      "general": "Hola, me gustaría hablar de un proyecto web con DiWAISE Media."
     },
     "contact": {
       "kicker": "Contacto",
@@ -155,8 +155,8 @@ export const STRINGS = {
       "primaryNav": "Principal"
     },
     "studio": {
-      "kicker": "Detrás de DWais Media",
-      "title": "Hola, somos DWais Media.",
+      "kicker": "Detrás de DiWAISE Media",
+      "title": "Hola, somos DiWAISE Media.",
       "body": "Tu negocio tiene algo único que ofrecer. Nuestra misión es hacerlo brillar en el mundo digital con una web que refleje su esencia, capte la atención de tus clientes y les invite a conectar contigo. Queremos ayudarte a convertir tu visión en una presencia digital de la que te sientas orgulloso.",
       "step1": "Hablamos de tu idea",
       "detail1": "Conocemos tu negocio y definimos lo que necesita tu web.",
@@ -168,8 +168,8 @@ export const STRINGS = {
   },
   "en": {
     "meta": {
-      "title": "DWais Media",
-      "description": "DWais Media designs websites for brands in Puerto Rico. Clear, bilingual digital presence — ready to grow."
+      "title": "DiWAISE Media",
+      "description": "DiWAISE Media designs websites for brands in Puerto Rico. Clear, bilingual digital presence — ready to grow."
     },
     "skip": "Skip to content",
     "nav": {
@@ -281,10 +281,10 @@ export const STRINGS = {
       }
     },
     "wa": {
-      "presence": "Hi, I'm interested in the Presence package (1-page landing) with DWais Media.",
-      "business": "Hi, I'm interested in the Business package (4–6 page site) with DWais Media.",
-      "growth": "Hi, I'm interested in the Growth package (redesign + conversion) with DWais Media.",
-      "general": "Hi, I'd like to talk about a web project with DWais Media."
+      "presence": "Hi, I'm interested in the Presence package (1-page landing) with DiWAISE Media.",
+      "business": "Hi, I'm interested in the Business package (4–6 page site) with DiWAISE Media.",
+      "growth": "Hi, I'm interested in the Growth package (redesign + conversion) with DiWAISE Media.",
+      "general": "Hi, I'd like to talk about a web project with DiWAISE Media."
     },
     "contact": {
       "kicker": "Contact",
@@ -321,8 +321,8 @@ export const STRINGS = {
       "primaryNav": "Primary"
     },
     "studio": {
-      "kicker": "Behind DWais Media",
-      "title": "Hi, we’re DWais Media.",
+      "kicker": "Behind DiWAISE Media",
+      "title": "Hi, we’re DiWAISE Media.",
       "body": "Your business has something unique to offer. Our mission is to help it shine online with a website that reflects its character, captures your customers’ attention, and invites them to connect with you. We’re here to turn your vision into a digital presence you can be proud of.",
       "step1": "Tell us about your idea",
       "detail1": "We get to know your business and define what your website needs.",

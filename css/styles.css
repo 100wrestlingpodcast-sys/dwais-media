@@ -1,4 +1,4 @@
-/* DWais Media — responsive editorial portfolio. */
+/* DiWAISE Media — responsive editorial portfolio. */
 :root {
   --bg:#080a0c;
   --bg-2:#101317;
@@ -104,8 +104,15 @@ section,article,main {
 }
 .wordmark {
   display:flex;
-  align-items:baseline;
+  align-items:center;
   gap:7px
+}
+.header-logo {
+  height:36px;
+  width:auto;
+  max-width:145px;
+  display:block;
+  object-fit:contain
 }
 .wordmark-dwais {
   font-family:var(--font-serif);
@@ -188,6 +195,20 @@ section,article,main {
   background:linear-gradient(120deg,#fff 10%,#f7f5ef 50%,#dbb77d);
   background-clip:text;
   color:transparent
+}
+.brand-name:has(.hero-brand-logo),
+.brand-name.has-logo {
+  max-width:100%;
+  background:none;
+  color:inherit;
+  line-height:1
+}
+.hero-brand-logo {
+  display:block;
+  width:min(100%,360px);
+  height:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 4px 24px rgba(0,0,0,0.45))
 }
 .hero-sub {
   color:var(--muted);

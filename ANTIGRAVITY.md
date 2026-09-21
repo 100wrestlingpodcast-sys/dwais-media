@@ -1,12 +1,12 @@
-# DWais Media — instrucciones para Antigravity
+# DiWAISE Media — instrucciones para Antigravity
 
 ## Qué es este proyecto
-Portfolio one-page de **DWais Media** (negocio de diseño/desarrollo web, Puerto Rico).  
+Portfolio one-page de **DiWAISE Media** (negocio de diseño/desarrollo web, Puerto Rico).  
 Live: https://dwaisemedia.netlify.app  
 Repo GitHub → Netlify (`main`).
 
 ## Reglas fijas (no las rompas)
-- Nombre: **DWais Media** (ortografía exacta). **Sin tagline.**
+- Nombre: **DiWAISE Media** (ortografía exacta). **Sin tagline.**
 - Idioma: **español por defecto** + toggle **ES | EN** que traduzca TODO (usa `js/strings.js` + `js/i18n.js`).
 - **Sin precios** en la página.
 - Contacto: `dwaisemedia@gmail.com` · WhatsApp `+1 210-620-9860` (`https://wa.me/12106209860`).
