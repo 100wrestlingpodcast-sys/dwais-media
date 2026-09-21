@@ -3,7 +3,7 @@ export const STRINGS = {
   "es": {
     "meta": {
       "title": "DiWAISE Media",
-      "description": "DiWAISE Media diseña sitios web para marcas en Puerto Rico. Presencia digital clara, bilingüe y lista para crecer."
+      "description": "DiWAISE Media diseña sitios web para tu marca, donde obtienes una presencia digital clara, bilingüe y lista para crecer."
     },
     "skip": "Saltar al contenido",
     "nav": {
@@ -169,7 +169,7 @@ export const STRINGS = {
   "en": {
     "meta": {
       "title": "DiWAISE Media",
-      "description": "DiWAISE Media designs websites for brands in Puerto Rico. Clear, bilingual digital presence — ready to grow."
+      "description": "DiWAISE Media designs websites for your brand, creating a clear, bilingual digital presence that is ready to grow."
     },
     "skip": "Skip to content",
     "nav": {
