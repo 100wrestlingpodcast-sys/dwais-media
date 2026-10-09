@@ -427,24 +427,51 @@ section,article,main {
   grid-column:span 3
 }
 .project-mock {
+  display:block;
   padding:24px 24px 0;
   background:#19211e;
   border-radius:14px 14px 0 0;
   border:1px solid #303b34;
-  border-bottom:0
+  border-bottom:0;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .22s ease-out,border-color .22s ease-out,box-shadow .22s ease-out
+}
+.project-mock:hover {
+  transform:translateY(-4px);
+  border-color:var(--accent);
+  box-shadow:0 12px 30px rgba(0,0,0,0.4)
+}
+.project-mock:hover .browser-url-text {
+  color:var(--accent)
+}
+.project-mock:focus-visible {
+  outline:2px solid var(--accent);
+  outline-offset:4px
+}
+.project-card:nth-child(1) .project-mock {
+  background:#19211e;
+  border-color:#303b34
 }
 .project-card:nth-child(2) .project-mock {
+  background:#261822;
+  border-color:#4a2b42
+}
+.project-card:nth-child(3) .project-mock {
   background:#2a2018;
   border-color:#493b2e
 }
-.project-card:nth-child(3) .project-mock {
-  background:#191e29
-}
 .project-card:nth-child(4) .project-mock {
-  background:#271719
+  background:#191e29;
+  border-color:#2a3648
 }
 .project-card:nth-child(5) .project-mock {
-  background:#17212a
+  background:#271719;
+  border-color:#452528
+}
+.project-card:nth-child(6) .project-mock {
+  background:#17212a;
+  border-color:#243644
 }
 .browser {
   overflow:hidden;
