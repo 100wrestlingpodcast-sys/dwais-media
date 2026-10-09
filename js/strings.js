@@ -25,11 +25,11 @@ export const STRINGS = {
       "sub": "Diseñamos sitios web para negocios en Puerto Rico. Tu identidad, tus servicios y una forma fácil de contactarte, desde cualquier pantalla.",
       "ctaWork": "Ver trabajos",
       "ctaWhatsapp": "Cotizar por WhatsApp",
-      "deviceAria": "iPad con el sitio de Khriz Studio TCG en pantalla",
+      "deviceAria": "iPad con el sitio de JB Sweet Temptations en pantalla",
       "deviceHint": "Arrastra para girar",
       "note": "Diseño a medida · Atención en español e inglés",
       "featured": "Proyecto destacado",
-      "alt": "Página de Khriz Studio TCG con bienvenida, productos y ubicación en Sabana Grande"
+      "alt": "Página de JB Sweet Temptations con café, repostería y opciones para ordenar"
     },
     "work": {
       "kicker": "Trabajo",
@@ -198,11 +198,11 @@ export const STRINGS = {
       "sub": "We design websites for businesses in Puerto Rico. Your identity, your services, and an easy way to get in touch, on every screen.",
       "ctaWork": "View work",
       "ctaWhatsapp": "Get a quote on WhatsApp",
-      "deviceAria": "iPad showing the Khriz Studio TCG website",
+      "deviceAria": "iPad showing the JB Sweet Temptations website",
       "deviceHint": "Drag to rotate",
       "note": "Custom design · Service in Spanish and English",
       "featured": "Featured project",
-      "alt": "Khriz Studio TCG homepage showing its welcome, products and Sabana Grande location"
+      "alt": "JB Sweet Temptations homepage showing coffee, bakery, and ordering options"
     },
     "work": {
       "kicker": "Work",
