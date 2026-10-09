@@ -34,7 +34,7 @@ export const STRINGS = {
     "work": {
       "kicker": "Trabajo",
       "title": "Tu próximo sitio empieza con una idea.",
-      "lede": "Explora cinco proyectos reales para negocios, coleccionistas y comunidades.",
+      "lede": "Explora proyectos reales para negocios, gastronomía, coleccionistas y comunidades.",
       "live": "Ver sitio",
       "expand": "Ver caso",
       "collapse": "Cerrar caso",
@@ -43,19 +43,26 @@ export const STRINGS = {
       "owned": "Proyecto propio"
     },
     "projects": {
-      "cigars": {
-        "name": "Juana Díaz Cigars",
-        "outcome": "Presencia premium para cigar bar y tienda oficial.",
-        "problem": "Una marca artesanal necesitaba transmitir lujo, tradición y acceso 21+ sin perder calidez.",
-        "solution": "Presentación visual de la marca, su propuesta y opciones de contacto en un sitio fácil de recorrer.",
-        "alt": "Captura del sitio Juana Díaz Cigars"
-      },
       "tcg": {
         "name": "Khriz Studio TCG",
         "outcome": "Tienda local y comunidad TCG en Sabana Grande, en un solo sitio.",
         "problem": "El local existía; en la web faltaba horario, eventos y una invitación clara a visitar.",
         "solution": "Sitio de retail + comunidad: horarios, mapa, eventos y un tono familiar para jugadores y coleccionistas.",
         "alt": "Captura del sitio Khriz Studio TCG"
+      },
+      "sweettemptations": {
+        "name": "JB Sweet Temptations",
+        "outcome": "Cafetería, repostería y cake design artesanal en Magnolia, Texas.",
+        "problem": "Una repostería y cafetería artesanal necesitaba centralizar su menú, pedidos especiales y opciones a domicilio.",
+        "solution": "Experiencia web bilingüe con menú interactivo por categorías, galería visual y acceso directo a llamadas y DoorDash.",
+        "alt": "Captura del sitio JB Sweet Temptations"
+      },
+      "cigars": {
+        "name": "Juana Díaz Cigars",
+        "outcome": "Presencia premium para cigar bar y tienda oficial.",
+        "problem": "Una marca artesanal necesitaba transmitir lujo, tradición y acceso 21+ sin perder calidez.",
+        "solution": "Presentación visual de la marca, su propuesta y opciones de contacto en un sitio fácil de recorrer.",
+        "alt": "Captura del sitio Juana Díaz Cigars"
       },
       "geek": {
         "name": "Geek Collector PR",
@@ -200,7 +207,7 @@ export const STRINGS = {
     "work": {
       "kicker": "Work",
       "title": "Your next website starts with an idea.",
-      "lede": "Explore five real projects for businesses, collectors, and communities.",
+      "lede": "Explore real projects for businesses, culinary brands, collectors, and communities.",
       "live": "Live site",
       "expand": "View case",
       "collapse": "Close case",
@@ -209,19 +216,26 @@ export const STRINGS = {
       "owned": "Own project"
     },
     "projects": {
-      "cigars": {
-        "name": "Juana Díaz Cigars",
-        "outcome": "A premium digital home for a cigar bar and official shop.",
-        "problem": "A craft brand needed to feel luxurious and 21+ without losing warmth.",
-        "solution": "A visual introduction to the brand, its offering, and contact options in an easy-to-navigate website.",
-        "alt": "Website screenshot: Juana Díaz Cigars"
-      },
       "tcg": {
         "name": "Khriz Studio TCG",
         "outcome": "Local TCG retail and community in Sabana Grande, in one site.",
         "problem": "The shop was real; the web was missing hours, events, and a reason to visit.",
         "solution": "A retail + community site: hours, map, events, and a welcoming tone for players and collectors.",
         "alt": "Website screenshot: Khriz Studio TCG"
+      },
+      "sweettemptations": {
+        "name": "JB Sweet Temptations",
+        "outcome": "Artisanal coffee, bakery, and cake design in Magnolia, Texas.",
+        "problem": "An artisanal bakery and coffee shop needed a central hub for its menu, custom cake orders, and online delivery without friction.",
+        "solution": "A bilingual web experience featuring a categorized interactive menu, visual gallery, and direct access to phone orders and DoorDash.",
+        "alt": "Website screenshot: JB Sweet Temptations"
+      },
+      "cigars": {
+        "name": "Juana Díaz Cigars",
+        "outcome": "A premium digital home for a cigar bar and official shop.",
+        "problem": "A craft brand needed to feel luxurious and 21+ without losing warmth.",
+        "solution": "A visual introduction to the brand, its offering, and contact options in an easy-to-navigate website.",
+        "alt": "Website screenshot: Juana Díaz Cigars"
       },
       "geek": {
         "name": "Geek Collector PR",
