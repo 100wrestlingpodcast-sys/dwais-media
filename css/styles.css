@@ -273,9 +273,23 @@ section,article,main {
   perspective:1400px
 }
 .device-stage {
+  display:block;
   width:100%;
   touch-action:auto;
-  padding:14px 4px
+  padding:14px 4px;
+  text-decoration:none;
+  cursor:pointer
+}
+.device-stage:focus-visible {
+  outline:none
+}
+.device-stage:focus-visible .ipad-mockup {
+  outline:2px solid var(--accent);
+  outline-offset:6px
+}
+.device-stage:hover .ipad-mockup {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px #232a26,0 40px 75px rgba(219,183,125,.18)
 }
 .ipad-mockup {
   display:grid;
@@ -287,7 +301,7 @@ section,article,main {
   background:#101214;
   border:1px solid #555954;
   box-shadow:0 0 0 3px #1c201f,0 35px 65px #0009;
-  transition:transform .2s ease-out
+  transition:transform .2s ease-out,border-color .2s,box-shadow .2s
 }
 .ipad-top-bar {
   display:flex;
